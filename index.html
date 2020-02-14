@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Hotel</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/front.css">
+	<style>
+	.nothing1{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+
+		<!--Navbar	-->
+	<nav class="navbar navbar-expand-sm navbar-dark bg-primary ">
+		<a href="#" class="navbar-brand">
+		<img src="hotel.svg" class="img-thumbnail" width="60" height="60"> <span style="margin-left: 1rem;">Hotels</span></a>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a href="#" class="nav-link" style="margin-right: 2rem;" id="loginlog">Login</a> </li>
+			<li class="nav-item"><a href="#" class="nav-link" style="margin-right: 5rem;" id="registration">Register</a> </li>
+		</ul>
+	</nav>
+
+	
+	<!-- login code -->
+	<div  class="w-100" id="loginpage" style="" >
+		<div class="row">
+		<div class="col-12 col-md-6 col-sm-8 col-lg-4 ">
+		<form class="row border shadow mt-5" method="post" action="insert.php">
+		<fieldset>
+		<div class="bg-light">
+			<div class="row mb-1">
+			<div class="offset-1"></div>
+				<div class="col-5" >
+					<button class="btn" id="customerR">Customer Register</button>	
+				</div>
+				<div class="col-4">
+					<button class="btn " id="hotelR">Hotel Register</button>	
+				</div>
+				<div class="col-1">
+					<button class="btn" id="closeR"><span>&cross;</span></button>	
+				</div>
+			</div>
+			<div class="row text-center form-group">
+				<div class="col-sm-4">
+					Name
+				</div>
+				<div class="col-sm-8">
+					<input type="text" id="name" name="name" placeholder="Enter Name" autocomplete="off" required >
+
+				</div>
+				<div id="show-error-name" class="col-12">
+					<span class="text-center" id="sp1" style="color:blue;">Name must be between 4 to 8 characters</span>
+				</div>
+			</div>
+			<div class="row text-center mt-1 form-group">
+				<div class="col-sm-4">
+					E- mail
+				</div>
+				<div class="col-sm-8">
+					<input type="email" name="email"  id="email"placeholder="abc@gmail.com" required autocomplete="off" >
+				</div>
+				<div id="show-error-email" class="col-12"></div>
+			</div>
+				<div class="row text-center mt-1 form-group">
+				<div class="col-sm-4">
+					Password
+				</div>
+				<div class="col-sm-8">
+					<input type="password" name="password" id="pass" placeholder="Enter a Password" required>
+				</div>
+				<div id="show-error-password" class="col-12">
+					<span class="text-center" id="passwordV">Password must be between 8 to 12 Characters.</span>
+				</div>
+			</div>
+				<div class="row text-center mt-2 form-group">
+				<div class="col-sm-4">
+					Confirm Password
+				</div>
+				<div class="col-sm-8">
+					<input type="password" style="height:3rem;" name="cpassword" placeholder="Confirm Password" id="cpass" required> 
+				</div>
+				<div id="show-error-cpassword" class="col-12">
+					<span class="text-center" id="cpasswordV"></span>
+				</div>
+			</div>
+				<div class="row text-center mt-1 form-group">
+				<div class="col-sm-12">
+					<button type="submit" id="submit" class="btn btn-outline-primary btn-lg mt-2">
+						Submit
+					</button>
+				</div>
+				</div>
+		
+			
+		</fieldset>
+		</div>
+		</form>
+		</div>
+		</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<!-- end login code -->
+
+	<!-- registration code -->
+<div id="registerpage">
+	<div class="row">
+		<div class="col-12 text-right">
+			<button class="btn" id="rcross"> <span>&cross;</span></button>
+		</div>
+		<div class="col-6 mt-2">
+			Name : 
+		</div>
+		<div class="col-6 mt-2">
+			<input type="text" id="lname"	 /> 
+		</div>
+		<div class="col-6 mt-2">
+			Password : 
+		</div>
+		<div class="col-6 mt-2">
+			<input type="password" id="lpass" /> 
+		</div>
+		<div class="col-6 mt-2">
+			Status : 
+		</div>
+		<div class="col-6 mt-2">
+			<button id="lcustomer" class="btn btn-primary" > Customer </button>
+			<button id="lhotel"  class="btn"> Hotels</button>
+		</div>
+		
+		<div class="col-12 mt-2 mb-2 text-center">
+			<button class="btn btn-success text-center w-25" id="logindemo">Login</button>
+		</div>
+		
+	</div>
+</div>
+
+	<!-- end registration code -->
+
+
+<div class="container">
+
+<div class="filteroptions">
+	<ul class="nav">
+		
+		
+		<li class="nav-item dropdown"> 
+		<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">State</a>
+		 
+		 <div class="dropdown-menu">
+		 	<a href="#" class="dropdown-item">Delhi</a>
+		 	<a href="#" class="dropdown-item">Hyderabad</a>
+		 	<a href="#" class="dropdown-item">Kolkata</a>
+		 </div>
+		 </li>
+		 <li class="nav-item dropdown"> 
+		
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Available date</a>
+			<div class="dropdown-menu">
+			<input type="date" name="">	
+			</div>
+		
+		</li>
+		<form class="form-inline ml-auto">
+			<input type="search" class="form-control" name="search" placeholder="Search">
+			<button class="btn btn-outline-danger ml-1" type="submit">
+				Search
+			</button>
+		</form>
+	</ul>
+	</div>
+	<!-- cards	-->
+		
+	<div class="card-deck mt-5">
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	<!-- 2 card -->
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	</div>
+	<div class="card-deck mt-5">
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+</div>
+
+<div class="card-deck mt-5">
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+	<div class="card">
+
+		
+			
+		<div class="card-body">
+			
+				<span class="h1"> Hotel Name</span>
+				<img src="image-1.jpg" alt = "Image" class="card-img-top img-fluid"  style="margin-left: 10rem; width: 160px; height: 100px;"  />
+				<h4>Location</h4>
+
+				<p> Available date
+				</p>
+				<footer class="card-footer bg-primary"> <button class="btn btn-primary">Book Now</button></footer>
+			
+		</div>
+	</div>
+</div>
+
+
+<script src="js/jquery.js"> </script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<!-- Validation of form 		-->
+<script>
+
+var decide = "customer";
+
+	$(document).ready(function(){
+		var spass="false";
+		var spass1="false";
+		var spass2="false";
+		// Name validation.
+		$('#name').focus(function(){
+			$('#sp1').css('display', 'inline')
+		});
+		$('#name').blur(function(){
+			var name_user = $('#name').val();
+			var name_box = document.getElementById('name');
+			if(name_user.length<4)
+			{
+				$('#sp1').html('**Name length is less than 4.');
+				$('#sp1').css('color', 'red');
+				
+				name_box.focus();
+				name_box.style.border="2px solid red";
+				
+			}
+			else if(name_user.length>8)
+			{
+				$('#sp1').html('**Name length is greater than 8.');
+				$('#sp1').css('color', 'red');
+				name_box.focus();
+				name_box.style.border="2px solid red";
+
+				
+			}
+			else {
+				$('#sp1').html('** 	Your Name length is Correct.');
+				$('#sp1').css('color', 'green');
+
+				name_box.style.border="1px solid black";
+
+
+			}	
+		});
+		
+		//Password Validation
+		$('[name="password"]').focus(function(){
+			$('#passwordV').css({
+				'display' : 'inline',
+				'color':'blue'
+			});
+
+		});
+
+		$('[name="password"]').keyup(function(){
+			var password = $('[name="password"]').val();
+			var password_box = document.getElementById('pass');
+			if(password.length<8) {
+				$('#passwordV').html('** Password is less than 8 Characters.');
+				$('#passwordV').css('color', 'red');
+				spass="false";
+				spass2="false";
+				password_box.focus();
+				password_box.style.border="2px solid red";
+			}
+			else if(password.length>12) {
+				$('#passwordV').html('** Password is greater than 12 Characters.');
+				$('#passwordV').css('color', 'red');
+				spass="false";
+				spass2="false";
+				password_box.focus();
+				password_box.style.border="2px solid red";
+			}
+			
+			else {
+				$('#passwordV').html('Password length is Correct.');
+				$('#passwordV').css('color', 'green');
+				spass="true";
+				
+				
+				
+				var adv_name;
+				var ch;	
+				for(var i=0;i<12;i++) {
+					
+					adv_name = $('[name="password"]').val();
+					ch = adv_name.charAt(i);
+					if((ch=='@') || (ch=='#')) {
+						spass2 = "confirm";
+						$('#passwordV').html('Password is now correct.');
+						$('#passwordV').css('color','green');
+						
+						password_box.style.border="1px solid black";
+						break;
+					}
+					else {
+						spass2="false";
+						$('#passwordV').html('Password must contain @ or # Symbol');
+						$('#passwordV').css({
+							'display':'inline',
+							'color':'red'
+						});
+						password_box.focus();
+						password_box.style.border="2px solid red";
+							
+					}
+				}
+			
+		}
+		});
+
+		//password == confirmPassword.
+		$('[name="cpassword"]').keyup(function(){
+			var ppass = $('[name="password"]').val();
+			var cpass = $('[name="cpassword"]').val();
+			var cpass_box = document.getElementById('cpass');
+			if(cpass!=ppass) {
+				$('#cpasswordV').html('**Password does not Matching!..');
+				$('#cpasswordV').css({
+					'display':'inline',
+					'color':'red'
+				});
+				spass1="false";
+				cpass_box.focus();
+				cpass_box.style.border="2px solid red";
+				return false;
+			}
+			else {
+				$('#cpasswordV').html('**Password is now Matching.');
+				$('#cpasswordV').css({
+					'display':'inline',
+					'color':'green'
+				});
+				spass1="confirm";
+				cpass_box.style.border="1px solid black";
+			}
+		});
+		 
+
+		//advance password validation.
+
+		//$('[name="password"]').blur(function(){
+		//	if(spass=='true') {
+			
+		//}
+		//});
+
+
+
+
+		//submit validation.
+
+		$('#submit').click(function(){
+			//name Validation 2.
+			var user = $('#name').val();
+			var user_box = document.getElementById('name');
+			if(user.length=="") {
+				$('#sp1').css('display', 'inline')
+				$('#sp1').html('** Name not be empty!..');
+			 	$('#sp1').css('color', 'red');
+			 	user_box.focus();
+				user_box.style.border="2px solid red";
+				return false;
+				
+			}
+			else if(user.length<4)
+			{
+				$('#sp1').html('**Name length is less than 4.');
+				$('#sp1').css('color', 'red');
+				user_box.focus();
+				user_box.style.border="2px solid red";
+				return false;
+			}
+			else if(user.length>8)
+			{
+				$('#sp1').html('**Name length is greater than 8.');
+				$('#sp1').css('color', 'red');
+				user_box.focus();
+				user_box.style.border="2px solid red";
+				return false;
+			}
+			else{
+
+			}
+			//password validation2.
+			var pass = $('[name="password"]').val();
+			var pass_box = document.getElementById('pass');
+			if(pass.length=="") {
+				$('#passwordV').css('display', 'inline');
+				$('#passwordV').html('** Password not be empty!..');
+			 	$('#passwordV').css('color', 'red');
+			 	pass_box.focus();
+			 	pass_box.style.border="2px solid red";
+				return false;
+			}
+			else if(pass.length<8)
+			{
+				$('#passwordV').css('display', 'inline');
+				$('#passwordV').html('** Password length is less than 8.');
+				$('#passwordV').css('color', 'red');
+				pass_box.focus();
+			 	pass_box.style.border="2px solid red";
+				return false;
+			}
+			else if(pass.length>12)
+			{
+				$('#passwordV').css('display', 'inline');
+				$('#passwordV').html('** Password length is greater than 12.');
+				$('#passwordV').css('color', 'red');
+				pass_box.focus();
+			 	pass_box.style.border="2px solid red";
+				return false;
+			}
+			else{
+				if((spass1=="confirm") && (spass2=="confirm")){
+				
+			 	pass_box.style.border="1px solid black";
+				}
+				else {
+					$('#cpasswordV').css('display', 'inline');
+					$('#cpasswordV').html('**Password does not Match!..');
+					$('#cpasswordV').css('color', 'red');
+					return false;
+				}
+
+			}
+
+			
+
+
+		});//close of submit.
+
+		//insert data using ajax.
+	
+		$('form').submit(function(e){
+			e.preventDefault();
+			
+			$.post(
+				'insert.php',
+				{
+					name:$('#name').val(),
+					password:$('#pass').val(),
+					email:$('#email').val(),
+					register: decide
+					/*
+					$('form:input').serializeArray()
+
+					*/
+				},
+				function(result){
+					if(result=='success'){
+						
+						$('#loginpage').css('display', 'none');
+						alert('Registration is Successfull.');
+						
+
+					}
+
+					else{
+						alert('Something Wrong!..');
+					}
+				}
+				);
+		});
+			
+
+
+	}); // close of document.ready fuction
+	
+</script>
+
+
+<!-- customer and hotel	-->
+<script>
+
+	$(document).ready(function(){
+		$('#customerR').click(function(){
+			decide = "customer";
+			$('#hotelR').css('border-bottom', 'none');
+			$(this).css('border-bottom', '2px solid blue');
+		});//customerR.clck()
+
+		$('#hotelR').click(function(){
+			decide = "hotel";
+			$(this).css('border-bottom', '2px solid blue');
+			$('#customerR').css('border-bottom', 'none');
+		});//hotelR.clck()
+
+		$('#closeR').click(function(){
+			$('#loginpage').css('display', 'none');
+		});//closeR.click()
+
+
+		$('#registration').click(function(){
+			$('#loginpage').css('display', 'block');
+		});//registration.click()
+
+		//logindemo
+		$('#rcross').click(function(){
+			$('#registerpage').css('display', 'none');
+		});
+		var status = "customer";
+		$('#lcustomer').click(function(){
+			$(this).attr('class', 'btn btn-primary');
+			$('#lhotel').attr('class', 'btn btn-white');
+			status = "customer";
+		});
+
+		$('#lhotel').click(function(){
+			$(this).attr('class', 'btn btn-primary');
+			$('#lcustomer').attr('class', 'btn btn-white');
+			status = "hotel";
+		});
+		
+		$('#logindemo').click(function(){
+			var name = $('#lname').val();
+			var pass = $('#lpass').val();
+			
+			if(name.length==0 || name.length<3){
+				alert('Enter the valid name');
+				return false;
+			}
+			else if(pass.length==0 || pass.length<8){
+				alert('Enter the valid pass');
+				return false;
+			}
+			else{
+			//send data inside the database and confirm login
+			$.post(
+					'login.php',
+					{
+						name: name,
+						pass: pass,
+						status:status
+					},
+					function(result){
+						if(result=="success"){
+							alert('success');
+							$('#registerpage').css('display', 'none');
+							$('.filteroptions').css('display', 'block');
+							$('.filteroptions').attr('class', 'nothing1')
+						}
+						else{
+							alert('error');
+						}
+					}
+				);
+		}
+		});
+		
+
+		//loginlog
+		$('#loginlog').click(function(){
+			$('#registerpage').css('display', 'block');
+		});
+
+
+	});//close of document.ready()
+
+
+
+
+
+</script>
+</body>
+</html>
+
